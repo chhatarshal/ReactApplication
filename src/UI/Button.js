@@ -5,8 +5,7 @@ const Button = (props) => {
 
     const clickButon = (event) => {
         props.onClick();
-    }
-   
+    }   
 
     return (
         <button 

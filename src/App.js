@@ -6,12 +6,12 @@ import UserList from './Components/UserList';
 
 function App() {
 
-  const userAdded = (userName) => {
+  const userAdded = (userName, age) => {
     setUserList(
       (oldValues) => {
         return [
           ...oldValues,
-          { name: userName, id: Math.random().toString()}
+          { name: userName, age: age,  id: Math.random().toString()}
         ]
       }
     );
