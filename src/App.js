@@ -1,32 +1,25 @@
-import React, {useState} from 'react';
-import Card from './UI/Card';
-import AddUser from './Components/AddUser';
-import UserList from './Components/UserList';
- 
+import React, { useState } from 'react';
+
+import AddUser from './components/Users/AddUser';
+import UsersList from './components/Users/UsersList';
 
 function App() {
+  const [usersList, setUsersList] = useState([]);
 
-  const userAdded = (userName, age) => {
-    setUserList(
-      (oldValues) => {
-        return [
-          ...oldValues,
-          { name: userName, age: age,  id: Math.random().toString()}
-        ]
-      }
-    );
-  }
-
-  const [userList, setUserList] = useState([]);
-
+  const addUserHandler = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [
+        ...prevUsersList,
+        { name: uName, age: uAge, id: Math.random().toString() },
+      ];
+    });
+  };
 
   return (
-    <div>
-        <Card>
-          <AddUser addUser={userAdded}></AddUser>
-          <UserList users={userList}></UserList>
-        </Card>
-    </div>
+    <React.Fragment>
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersList} />
+    </React.Fragment>
   );
 }
 
